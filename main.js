@@ -17,7 +17,10 @@ else {
 const updateText = () => {
   const filterValue = computed.getPropertyValue("filter");
   const blur = +filterValue.substring(5, filterValue.length - 3);
-  if (Number.isNaN(blur)) return;
+  if (Number.isNaN(blur)) {
+    span.style.opacity = 0;
+    return;
+  }
 
   const percentage = (blur * 100) / initialBlur;
   span.textContent = Math.floor(100 - percentage) + "%";
